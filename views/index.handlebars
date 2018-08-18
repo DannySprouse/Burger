@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<a href="https://clipartxtras.com/download/3a6e6ea6e4def7f21f88b93aa05836cf201916e6.html" title="Image from clipartxtras.com"><img src="https://img.clipartxtras.com/49634f9de435a61d00e471f645e9f556_burger-png-images-transparent-free-download-pngmartcom-burger-clipart-transparent_450-450.png" width="200" alt="burger clipart transparent" /></a>
+			<h1> Eat-Da-Burger! </h1>
+			<br />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="row readytoeat">
+				<h2>Devour These Burgers</h2>
+			  {{#each burger_data}}
+			  	{{#unless this.devoured}}
+				<div class="col-xs-9">
+					<p>
+					{{this.id}}. {{this.burger_name}}
+					</p>
+				</div>
+				<div class="col-xs-3 text-center">
+					<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+						<input input type="hidden" type="text" name="burger_id" value={{this.id}}><br>
+						<button type="submit" class="btn btn-default">Devour it!</button>
+					</form>
+				</div>
+				{{/unless}}
+			  {{/each}}
+			</div>
+		</div>
+		<div class="col-xs-6 text-center">
+			<h2>Devoured Burgers</h2>
+			  {{#each burger_data}}
+			  	{{#if this.devoured}}<p>
+			  		<input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+				{{/if}}
+			  {{/each}}</p>
+		</div>
+	</div>
+</div>
+<br /><br />
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center enter_section">
+			<p>Enter a burger you want to eat below, click "SUBMIT", then devour the burger!.</p>
+			<form action="/burgers/create" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<br />
+				<button type="submit" class="btn btn-primary" id="text-enter-button">SUBMIT</button>
+			</form>
+			<br /> <br />
+		</div>
+	</div>
+</div>
